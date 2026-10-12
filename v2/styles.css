@@ -160,7 +160,7 @@ h3 { font-size: 20px; letter-spacing: -0.3px; line-height: 1.25; }
 /* Quién */
 .about { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
 .bio { font-size: 20px; line-height: 1.5; letter-spacing: -0.2px; margin: 0; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 36px 0 36px; border-top: 1px solid var(--filete); }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 36px 0 36px; border-top: 1px solid var(--filete); }
 .stats div { padding-top: 20px; }
 .big { display: block; font-size: clamp(44px, 5vw, 64px); font-weight: 700; line-height: 1; letter-spacing: -2px; color: var(--oliva-profundo); }
 .stats p { margin: 10px 0 0; font-size: 14.5px; color: var(--cuerpo); }
