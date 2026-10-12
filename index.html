@@ -4,68 +4,77 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MagnusLabs</title>
-  <meta name="description" content="MagnusLabs — servicios de tecnología y consultoría.">
+  <meta name="description" content="MagnusLabs — acompañamos a empresas medianas a adoptar IA y ordenar su tecnología.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#" class="logo">Magnus<span>Labs</span></a>
+      <a href="#" class="logo">MagnusLabs</a>
       <nav>
         <a href="#servicios">Servicios</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto" class="btn btn-sm">Contacto</a>
+        <a href="#como">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="dark hero">
+      <span class="ghost-word" aria-hidden="true">Magnus</span>
       <div class="container">
-        <p class="eyebrow">Versión plantilla</p>
-        <h1>Soluciones que impulsan tu negocio</h1>
-        <p class="lead">Texto de ejemplo: una frase breve que explique la propuesta de valor de MagnusLabs.</p>
-        <a href="#contacto" class="btn">Hablemos</a>
+        <p class="label">MagnusLabs</p>
+        <h1>Tecnología que queda instalada en tu equipo.</h1>
+        <p class="lead">Texto provisorio. La propuesta de valor se define cuando cerremos los servicios.</p>
+        <a href="#contacto" class="btn">Conversemos</a>
       </div>
     </section>
 
     <section id="servicios" class="section">
-      <div class="container">
-        <h2>Servicios</h2>
-        <div class="grid">
-          <article class="card"><h3>Servicio 1</h3><p>Descripción breve del servicio.</p></article>
-          <article class="card"><h3>Servicio 2</h3><p>Descripción breve del servicio.</p></article>
-          <article class="card"><h3>Servicio 3</h3><p>Descripción breve del servicio.</p></article>
+      <div class="container split">
+        <div>
+          <p class="label">Servicios</p>
+          <h2>Lo que hacemos.</h2>
+          <p class="muted">Contenido en definición.</p>
+        </div>
+        <ol class="ledger">
+          <li><span class="num">01</span><div><h3>Servicio en definición</h3><p>Descripción breve del servicio.</p></div></li>
+          <li><span class="num">02</span><div><h3>Servicio en definición</h3><p>Descripción breve del servicio.</p></div></li>
+          <li><span class="num">03</span><div><h3>Servicio en definición</h3><p>Descripción breve del servicio.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="como" class="section rule-top">
+      <div class="container split">
+        <div>
+          <p class="label">Cómo trabajamos</p>
+          <h2>Primero el terreno, después la especificación.</h2>
+        </div>
+        <div class="stats">
+          <div><span class="big">5</span><p>semanas de diagnóstico</p></div>
+          <div><span class="big">1</span><p>caso de uso real por mes</p></div>
         </div>
       </div>
     </section>
 
-    <section id="nosotros" class="section alt">
-      <div class="container narrow">
-        <h2>Nosotros</h2>
-        <p>Párrafo de ejemplo sobre la misión, experiencia y equipo de MagnusLabs.</p>
-      </div>
-    </section>
-
-    <section id="contacto" class="section">
+    <section id="contacto" class="dark section">
+      <span class="ghost-word" aria-hidden="true">Hablemos</span>
       <div class="container contact">
         <div>
-          <h2>Contacto</h2>
-          <p class="muted">¿Tienes un proyecto en mente? Escríbenos y conversemos.</p>
-          <div class="contact-links">
-            <a href="https://wa.me/56991630293" target="_blank" rel="noopener" class="link-card">
-              <strong>WhatsApp</strong><span>+56 9 9163 0293</span>
-            </a>
-            <a href="https://www.linkedin.com/in/jvaisman" target="_blank" rel="noopener" class="link-card">
-              <strong>LinkedIn</strong><span>/in/jvaisman</span>
-            </a>
-          </div>
+          <p class="label">Contacto</p>
+          <h2>Una conversación de diagnóstico inicial, sin costo.</h2>
+          <ul class="contact-links">
+            <li><span>Email</span><a href="mailto:hellovaisman@gmail.com">hellovaisman@gmail.com</a></li>
+            <li><span>WhatsApp</span><a href="https://wa.me/56991630293" target="_blank" rel="noopener">+56 9 9163 0293</a></li>
+            <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/jvaisman" target="_blank" rel="noopener">/in/jvaisman</a></li>
+          </ul>
         </div>
         <form id="contact-form" class="form" action="https://formspree.io/f/maeqbard" method="POST">
           <label>Nombre<input type="text" name="name" required></label>
           <label>Empresa<input type="text" name="company"></label>
           <label>Email<input type="email" name="email" required></label>
-          <label>Mensaje<textarea name="message" rows="5" required></textarea></label>
+          <label>Mensaje<textarea name="message" rows="4" required></textarea></label>
           <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
           <button type="submit" class="btn">Enviar</button>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -77,6 +86,7 @@
   <footer class="footer">
     <div class="container">© <span id="year"></span> MagnusLabs</div>
   </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -97,10 +107,10 @@
         if (!res.ok) throw new Error();
         form.reset();
         status.classList.add('ok');
-        status.textContent = '¡Gracias! Te responderemos pronto.';
+        status.textContent = 'Gracias. Te respondemos pronto.';
       } catch {
         status.classList.add('error');
-        status.textContent = 'No se pudo enviar. Escríbenos por WhatsApp.';
+        status.textContent = 'No se pudo enviar. Escríbenos por WhatsApp o email.';
       } finally {
         btn.disabled = false;
       }
