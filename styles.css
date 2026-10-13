@@ -73,7 +73,9 @@ h3 { font-size: 20px; letter-spacing: -0.3px; line-height: 1.25; }
 /* Header */
 .top { position: sticky; top: 0; z-index: 20; background: rgba(252,252,250,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--filete); }
 .top-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.logo { font-weight: 700; font-size: 19px; letter-spacing: -0.4px; text-decoration: none; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 400; font-size: 19px; letter-spacing: -0.4px; text-decoration: none; }
+.logo b { font-weight: 700; }
+.logo-mark { flex: none; }
 .top nav { display: flex; align-items: center; gap: 26px; }
 .top nav a:not(.pill) { font-size: 14px; color: var(--cuerpo); text-decoration: none; }
 .top nav a:not(.pill):hover { color: var(--tinta); }
