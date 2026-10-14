@@ -9,6 +9,20 @@
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yxtakv1l85");
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5695V4EGE4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5695V4EGE4');
+  </script>
 </head>
 <body>
   <header class="top">
@@ -281,6 +295,58 @@
   </footer>
 
   <script>
+    // Medición: GA4 + Clarity
+    function track(name, params) {
+      params = params || {};
+      if (window.gtag) gtag('event', name, params);
+      if (window.clarity) {
+        clarity('event', name);
+        Object.keys(params).forEach(function (k) { clarity('set', k, String(params[k])); });
+      }
+    }
+    function sectionName(el) {
+      if (el.closest('header')) return 'encabezado';
+      if (el.closest('.hero')) return 'portada';
+      if (el.closest('footer')) return 'pie';
+      const s = el.closest('section');
+      const e = s && s.querySelector('.eyebrow');
+      return e ? e.textContent.trim() : 'otro';
+    }
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a');
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (href === '#contacto') track('cta_click', { location: sectionName(a) });
+      else if (href.indexOf('wa.me') > -1) track('contact_click', { method: 'whatsapp', location: sectionName(a) });
+      else if (href.indexOf('mailto:') === 0) track('contact_click', { method: 'email', location: sectionName(a) });
+      else if (href.indexOf('linkedin.com') > -1) track('contact_click', { method: 'linkedin', location: sectionName(a) });
+      else if (href.charAt(0) === '#' && a.closest('nav')) track('nav_click', { target: href.slice(1) || 'inicio' });
+    });
+    document.querySelectorAll('.faq details').forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) track('faq_open', { question: d.querySelector('summary').textContent.trim() });
+      });
+    });
+    if ('IntersectionObserver' in window) {
+      const seen = new Set();
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          const name = sectionName(en.target.querySelector('.eyebrow') || en.target);
+          io.unobserve(en.target);
+          if (seen.has(name)) return;
+          seen.add(name);
+          track('section_view', { section: name });
+        });
+      }, { threshold: 0.4 });
+      document.querySelectorAll('main > section').forEach(function (s) { io.observe(s); });
+    }
+    let formStarted = false;
+    document.getElementById('contact-form').addEventListener('input', function () {
+      if (!formStarted) { formStarted = true; track('form_start', { form: 'contacto' }); }
+    });
+  </script>
+  <script>
     const form = document.getElementById('contact-form');
     const status = form.querySelector('.form-status');
     form.addEventListener('submit', async (e) => {
@@ -299,6 +365,7 @@
         form.reset();
         status.classList.add('ok');
         status.textContent = 'Gracias. Te respondemos pronto.';
+        track('generate_lead', { form: 'contacto' });
       } catch {
         status.classList.add('error');
         status.textContent = 'No se pudo enviar. Escríbenos por WhatsApp o email.';
